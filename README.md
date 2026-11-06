@@ -6,9 +6,7 @@
 
 ## 🖼️ 팀 포스터
 
-<div class="poster"><img src="KakaoTalk_20260911_153156882.png" alt="팀 포스터" width="600"/></div>
-
-[INNER_VOICE_A0_v7.pdf](https://github.com/user-attachments/files/34458578/INNER_VOICE_A0_v7.pdf)
+<div class="poster"><img src="https://github.com/user-attachments/files/34458578/INNER_VOICE_A0_v7.pdf" alt="팀 포스터" width="600"/></div>
 
 ***
 
