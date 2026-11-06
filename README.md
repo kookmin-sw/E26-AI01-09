@@ -8,7 +8,7 @@
 
 <div class="poster"><img src="KakaoTalk_20260911_153156882.png" alt="팀 포스터" width="600"/></div>
 
-<p align="center" class="poster-caption"><sub>AI01 9팀, 「Where AI Meets Creativity」(2026). 출처: 생성형 AI로 제작</sub></p>
+[INNER_VOICE_A0_v7.pdf](https://github.com/user-attachments/files/34458578/INNER_VOICE_A0_v7.pdf)
 
 ***
 
