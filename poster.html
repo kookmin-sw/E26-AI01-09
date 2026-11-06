@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<title>INNER VOICE</title>
+<style>
+@page { size: 841mm 1189mm; margin: 0; }
+:root{
+  --bg:#0E1221; --panel:#161B2D; --panel2:#1C2236; --line:#2C3450; --text:#EDEBE6; --sub:#A7ADBD; --dim:#6E7590;
+  --voice:#FF6B3D; --fact:#5CC9D6; --hyp:#F2B84B; --op:#B6A8F2; --bad:#E06A6A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{word-break:keep-all}
+.nw{white-space:nowrap}
+html,body{background:var(--bg)}
+body{width:841mm;height:1189mm;font-family:"Noto Sans CJK KR",sans-serif;color:var(--text);position:relative;overflow:hidden;
+  background:radial-gradient(ellipse 520mm 420mm at 92% 3%, #2A1A22 0%, rgba(14,18,33,0) 70%), radial-gradient(ellipse 600mm 500mm at 0% 60%, #13233A 0%, rgba(14,18,33,0) 70%), var(--bg);}
+.wrap{position:absolute;left:34mm;right:34mm;top:24mm;bottom:18mm;display:flex;flex-direction:column}
+.wrap>*{flex-shrink:0}
+.mono{font-family:"DejaVu Sans Mono",monospace;letter-spacing:.06em}
+.top{display:flex;justify-content:space-between;font-size:15pt;color:var(--sub)}
+.top b{color:var(--text)}
+
+.hero{display:grid;grid-template-columns:1fr 1.05fr;gap:12mm;margin-top:6mm;align-items:end}
+.kick{font-size:14pt;color:var(--voice);font-weight:700}
+.title{font-weight:900;font-size:132pt;line-height:.84;letter-spacing:-.025em;margin-top:2mm}
+.title span{background:linear-gradient(90deg,#FF6B3D,#FFB08F);-webkit-background-clip:text;color:transparent}
+.sub{font-size:30pt;font-weight:900;line-height:1.3}
+.sub em{font-style:normal;color:var(--voice)}
+.lead{font-size:19pt;line-height:1.6;color:var(--sub);margin-top:4mm}
+.lead b{color:var(--text)}
+
+.scene{margin-top:7mm;border-radius:4mm;overflow:hidden;position:relative;border:0.5mm solid var(--line)}
+.scene img{display:block;width:100%;height:226mm;object-fit:cover;object-position:50% 80%}
+.scene .cap{position:absolute;left:5mm;bottom:4mm;right:5mm;display:flex;justify-content:space-between;align-items:flex-end;gap:6mm}
+.scene .cap .t{background:rgba(14,18,33,.84);padding:2.5mm 4.5mm;border-radius:2mm;font-size:15pt;line-height:1.45}
+.scene .cap .t b{color:var(--voice)}
+
+.one{margin-top:5mm;display:grid;grid-template-columns:1fr 1fr 1.25fr;border:0.5mm solid var(--line);border-radius:3mm;overflow:hidden}
+.one div{padding:3.5mm 6mm;background:var(--panel)}
+.one div+div{border-left:0.5mm solid var(--line)}
+.one div:last-child{background:var(--voice)}
+.one small{display:block;font-size:11.5pt;color:var(--dim);font-weight:700;letter-spacing:.1em;margin-bottom:.5mm}
+.one div:last-child small{color:#FFE2D8}
+.one p{font-size:19pt;font-weight:700;line-height:1.35}
+
+.sec{margin-top:8mm}
+.sh{display:flex;align-items:center;gap:5mm;margin-bottom:4mm}
+.pill{font-family:"DejaVu Sans Mono",monospace;font-size:13pt;font-weight:700;padding:1.3mm 4mm;border-radius:10mm;letter-spacing:.08em;white-space:nowrap}
+.pill.now{background:var(--fact);color:#06232A}
+.pill.fut{background:var(--voice);color:#fff}
+.pill.q{background:var(--op);color:#1B1640}
+.pill.p{background:#3A4260;color:var(--text)}
+.sh h2{font-size:29pt;font-weight:900;letter-spacing:-.01em;white-space:nowrap}
+.sh .s{font-size:15pt;color:var(--sub)}
+.sh .rule{flex:1;height:0.4mm;background:var(--line)}
+.tag{display:inline-block;font-size:11pt;font-weight:700;padding:.5mm 2.2mm;border-radius:1.2mm;white-space:nowrap;vertical-align:middle}
+.t-f{background:rgba(92,201,214,.16);color:var(--fact);border:0.3mm solid rgba(92,201,214,.5)}
+.t-h{background:rgba(242,184,75,.14);color:var(--hyp);border:0.3mm dashed rgba(242,184,75,.7)}
+.t-p{background:rgba(182,168,242,.14);color:var(--op);border:0.3mm solid rgba(182,168,242,.5)}
+sup{font-size:10pt;color:var(--fact);font-weight:700;margin-left:.4mm}
+
+/* why brain */
+.why{display:grid;grid-template-columns:1.55fr 1fr;gap:7mm}
+table.cmp{width:100%;border-collapse:separate;border-spacing:0;font-size:17pt;border-radius:3mm;overflow:hidden;border:0.4mm solid var(--line)}
+.cmp th{font-size:15pt;text-align:left;padding:3mm 4mm;background:var(--panel2);color:var(--sub);font-weight:700}
+.cmp th.us{background:var(--voice);color:#fff}
+.cmp td{padding:2.6mm 4mm;border-top:0.35mm solid var(--line);background:var(--panel);vertical-align:top;line-height:1.4}
+.cmp td:first-child{font-weight:900;width:52mm}
+.cmp .sm{font-size:12pt;font-weight:400;color:var(--dim)}
+.cmp td.no{color:#E9A3A3}
+.cmp td.yes{color:#FFD3C2;background:#22202F}
+.whynote{background:var(--panel);border:0.4mm solid var(--line);border-radius:3mm;padding:5mm 6mm;display:flex;flex-direction:column;gap:3mm}
+.whynote h4{font-size:18pt;font-weight:900}
+.whynote p{font-size:17pt;line-height:1.6;color:#D2D0CB}
+.whynote p b{color:var(--text)}
+.whynote .k{background:rgba(255,107,61,.1);border-left:1mm solid var(--voice);padding:2.5mm 3.5mm;font-size:17pt;color:#FFE2D8;font-weight:700;line-height:1.5}
+
+/* core */
+.core{border-radius:4mm;padding:6mm;background:linear-gradient(180deg,rgba(255,107,61,.10),rgba(255,107,61,.02));border:0.5mm solid rgba(255,107,61,.45)}
+.core h3{font-size:20pt;font-weight:900;margin-bottom:3mm;display:flex;align-items:center;gap:4mm}
+.core h3 .n{font-family:"DejaVu Sans Mono",monospace;font-size:12pt;color:var(--voice)}
+.core svg{display:block;width:100%;height:auto}
+.flow{display:grid;grid-template-columns:auto 1fr 5mm 1fr 5mm 1fr 5mm 1fr 5mm 1fr 5mm 1fr 5mm 1fr auto;align-items:stretch;gap:0;margin-top:2mm}
+.fs{background:var(--panel2);border:0.4mm solid var(--line);border-radius:2.5mm;padding:3.2mm 3.4mm;display:flex;flex-direction:column;gap:1.2mm}
+.fs .n{font-family:"DejaVu Sans Mono",monospace;font-size:10.5pt;color:var(--voice)}
+.fs h5{font-size:19pt;font-weight:900;line-height:1.3}
+.fs p{font-size:16pt;line-height:1.45;color:#CFCDC8}
+.fs .tag{align-self:flex-start;margin-top:auto}
+.fs.ai{border-color:rgba(255,107,61,.6)}
+.fs.rx{border-color:rgba(182,168,242,.7)}
+.fs.rx .n{color:var(--op)}
+.fa{display:flex;align-items:center;justify-content:center;color:var(--dim);font-size:13pt}
+.who{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 3mm;gap:1.5mm;font-size:13pt;font-weight:900}
+.who svg{width:26mm;height:auto}
+.mods{display:grid;grid-template-columns:repeat(6,1fr);gap:4mm;margin-top:5mm}
+.md{background:var(--panel);border-radius:3mm;padding:4mm;border-top:1.2mm solid var(--voice);display:flex;flex-direction:column;gap:2mm}
+.md.rx{border-top-color:var(--op)}
+.md.sec2{border-top-color:var(--bad)}
+.md .no{font-family:"DejaVu Sans Mono",monospace;font-size:10.5pt;color:var(--voice)}
+.md.rx .no{color:var(--op)} .md.sec2 .no{color:var(--bad)}
+.md h4{font-size:21pt;font-weight:900;line-height:1.3}
+.md .what{font-size:17.5pt;line-height:1.5;color:#E8E6E1}
+.md .seed{font-size:15pt;line-height:1.5;color:#CFE9EC;margin-top:auto;border-top:0.35mm solid var(--line);padding-top:2mm}
+.md .seed b{color:var(--fact)}
+
+/* trajectory */
+.tl{position:relative;display:grid;grid-template-columns:repeat(8,1fr);gap:3.5mm}
+.tl .bar{position:absolute;left:3mm;right:3mm;top:13.5mm;height:1mm;background:linear-gradient(90deg,var(--fact) 0%,var(--fact) 72%,var(--hyp) 76%,var(--voice) 100%)}
+.tp .y{font-size:18pt;font-weight:900}
+.tp .d{width:5.5mm;height:5.5mm;border-radius:50%;background:var(--fact);margin:2.5mm 0 3mm;position:relative;z-index:2;box-shadow:0 0 0 1.5mm var(--bg)}
+.tp.h .d{background:var(--bg);border:1mm solid var(--hyp)} .tp.h .y{color:var(--hyp)}
+.tp.e .d{background:var(--voice);width:7mm;height:7mm;margin-top:1.5mm} .tp.e .y{color:var(--voice)}
+.tp .k{font-size:11.5pt;color:var(--sub);font-weight:700}
+.tp p{font-size:16pt;line-height:1.45;margin-top:.8mm}
+.tp p b{color:var(--fact)}
+
+/* challenges */
+table.ch{width:100%;border-collapse:separate;border-spacing:0;font-size:18pt;border-radius:3mm;overflow:hidden;border:0.4mm solid var(--line)}
+.ch th{font-size:14.5pt;text-align:left;padding:2.6mm 3.5mm;background:var(--panel2);color:var(--sub);font-weight:700}
+.ch td{padding:2.4mm 3.5mm;border-top:0.35mm solid var(--line);background:var(--panel);vertical-align:top;line-height:1.42}
+.ch td:first-child{font-weight:900;width:46mm}
+.ch td.now{color:#CFE9EC;width:205mm}
+.ch td.fut{color:#FFE2D8}
+.ch td.ai{color:#E8E6E1;width:180mm}
+.ch tr.top1 td{background:#2A1F22}
+.ch tr.top1 td:first-child{color:var(--voice)}
+.ch .big{display:inline-block;font-size:11pt;background:var(--voice);color:#fff;padding:.3mm 2mm;border-radius:1mm;margin-top:1mm}
+.ch td.ai b{color:#FFD3C2}
+.ch tr.hack td{background:#241C2A}
+.ch tr.hack td:first-child{color:var(--bad)}
+
+.eth{display:grid;grid-template-columns:repeat(4,1fr);gap:4mm}
+.qq{border:0.4mm solid var(--line);border-radius:3mm;padding:3mm 4mm}
+.qq h6{font-size:18pt;font-weight:900;margin-bottom:.8mm;color:var(--op)}
+.qq .ans{font-size:16pt;line-height:1.45;color:var(--text);font-weight:700;margin-top:2mm;padding-top:2mm;border-top:0.35mm dashed var(--line)}
+.qq p{font-size:16pt;line-height:1.45;color:var(--sub)}
+
+.foot{margin-top:auto;display:grid;grid-template-columns:0.75fr 1.8fr;gap:8mm;border-top:0.5mm solid var(--line);padding-top:3.5mm}
+.team{display:grid;grid-template-columns:auto 1fr 1fr 1fr;gap:2mm 5mm;align-items:end}
+.team .h{font-size:20pt;font-weight:900}
+.blank{border-bottom:0.5mm solid var(--sub);height:7mm}
+.team .nm{font-size:19pt;font-weight:900;border-bottom:0.5mm solid var(--line);padding-bottom:1mm}
+.team .r{font-size:12.5pt;color:var(--dim)}
+.src{font-size:10.2pt;line-height:1.48;color:var(--sub)}
+.src b{color:var(--text)}
+.legend{margin-top:1mm;display:flex;gap:3mm;align-items:center;flex-wrap:wrap}
+</style></head>
+<body><div class="wrap">
+
+<div class="top"><div><b>2026 국민대학교 유레카 프로젝트</b> · 미래 서비스 기획</div><div><b>9팀</b> · 의사소통 방식의 변화</div></div>
+
+<div class="hero">
+  <div><div class="kick mono">BRAIN-CHIP COMMUNICATION · 2050</div><div class="title">INNER<br><span>VOICE</span></div></div>
+  <div>
+    <div class="sub">2050년, 뇌 안의 칩 하나로<br><em>생각을 주고받는다</em></div>
+    <p class="lead">뇌 안의 칩이 <b>생각을 말로 읽어 상대의 뇌에 그대로 전하고</b>, 언어가 다르면 AI가 번역한다. 입과 귀를 거치지 않으니 <b>장애와 언어의 경계가 대화에서 사라진다.</b></p>
+  </div>
+</div>
+
+<div class="scene">
+  <img src="scene/scene.svg" alt="2050년 공원에서 여러 무리의 사람들이 뇌 신호로 대화하는 장면">
+  <div class="cap"><div class="t"><b>2050년, 서울의 한 공원.</b> 아무도 입을 열지 않지만 모두가 대화 중이다.</div></div>
+</div>
+
+<div class="one">
+  <div><small>누구의</small><p>말·소리·언어의 벽에<br>막힌 모든 사람의</p></div>
+  <div><small>어떤 문제를</small><p>입과 귀를 거쳐야만<br>하는 소통 방식을</p></div>
+  <div><small>어떻게 바꾼다</small><p>뇌 안의 칩과 AI로<br>생각을 직접 주고받게 바꾼다</p></div>
+</div>
+
+<!-- WHY BRAIN -->
+<div class="sec">
+  <div class="sh"><span class="pill p">WHY BRAIN</span><h2>왜 이어폰이 아니라 뇌 안의 칩인가</h2><div class="rule"></div></div>
+  <div class="why">
+    <table class="cmp">
+      <tr><th></th><th>이어폰 · 착용형</th><th class="us">INNER VOICE · 뇌 안의 칩</th></tr>
+      <tr><td>보내기</td><td class="no">입으로 말해야 한다</td><td class="yes">말하려고 생각만 하면 된다</td></tr>
+      <tr><td>받기</td><td class="no">귀로 소리를 들어야 한다</td><td class="yes">귀를 거치지 않고 뇌로 받는다</td></tr>
+      <tr><td>말할 수 없는 사람</td><td class="no">글자를 따로 입력해야 한다</td><td class="yes">다른 사람과 똑같이 대화</td></tr>
+      <tr><td>들을 수 없는 사람</td><td class="no">화면 자막을 따로 읽어야 한다</td><td class="yes">다른 사람과 똑같이 대화</td></tr>
+      <tr><td>신호의 정밀도<br><small class="sm">과제가 달라 참고용 비교</small></td><td class="no">머리 밖 대형 장비(MEG)<br>타자 과제 단어 <span class="nw">61%<sup>[8]</sup></span></td><td class="yes">신경세포 바로 옆<br>말 해독 단어 <span class="nw">97.5%<sup>[3]</sup></span></td></tr>
+    </table>
+    <div class="whynote">
+      <h4>착용형으로는 왜 안 되나</h4>
+      <p>머리 밖 센서는 <b>콘서트장 밖에서 공연을 듣는 것</b>과 같다. AI도 <b>신호에 없는 정보는 만들 수 없다.</b></p>
+      <div class="k">그래서 칩은 뇌 안에, 넣는 과정은 주사 한 번으로.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CORE TECH -->
+<div class="sec">
+  <div class="sh"><span class="pill fut">CORE TECH</span><h2>2050년 핵심 기술 구현 장면</h2><span class="s"><span class="tag t-f">사실</span> 지금 구현됨 &nbsp;<span class="tag t-h">가설</span> 팀이 그린 2050년</span><div class="rule"></div></div>
+  <div class="core">
+    <h3><span class="n">PART A</span>주사 한 번으로 뇌 안에 들어가는 칩</h3>
+    <svg viewBox="0 0 760 200" font-family="Noto Sans CJK KR">
+      <defs><marker id="ma" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#FF6B3D"/></marker></defs>
+      <!-- NOW panel -->
+      <g transform="translate(0,6)">
+        <rect x="0" y="0" width="200" height="186" rx="8" fill="#161B2D" stroke="#2C3450"/>
+        <text x="12" y="20" font-size="10" font-weight="900" fill="#5CC9D6">현재 임상시험 성공 사례</text>
+        <text x="12" y="34" font-size="7.6" fill="#A7ADBD">2024 · UC Davis · 환자 1명 [3]</text>
+        <g transform="translate(26,46)">
+          <path d="M14 96 L14 76 C3 70 -2 56 -2 44 C-2 20 18 4 44 4 C68 4 86 22 86 42 C86 48 88 53 92 58 C94 61 93 63 89 64 L86 65 L86 74 C86 80 81 84 74 84 L66 84 L66 96 Z" fill="#1C2236" stroke="#EDEBE6" stroke-width="1.1"/>
+          <path d="M30 10 L58 10" stroke="#E06A6A" stroke-width="2.4"/>
+          <path d="M28 6 L60 6" stroke="#E06A6A" stroke-width="1" stroke-dasharray="2 2"/>
+          <g fill="#5CC9D6"><rect x="38" y="30" width="5" height="5"/><rect x="45" y="28" width="5" height="5"/><rect x="38" y="37" width="5" height="5"/><rect x="45" y="35" width="5" height="5"/></g>
+          <path d="M44 30 L44 4" stroke="#A7ADBD" stroke-width="1"/>
+          <rect x="38" y="-4" width="12" height="7" rx="1.5" fill="#A7ADBD"/>
+          <path d="M38 0 C10 -8 -18 18 -18 80 C-18 112 0 124 14 128" stroke="#A7ADBD" stroke-width="1.2" fill="none"/>
+          <rect x="14" y="122" width="34" height="18" rx="3" fill="#2C3450" stroke="#A7ADBD"/>
+          <text x="31" y="134" font-size="6.6" fill="#EDEBE6" text-anchor="middle">컴퓨터</text>
+        </g>
+        <g font-size="7.8" fill="#EDEBE6">
+          <text x="120" y="56"><tspan fill="#E06A6A" font-weight="700">두개골을 열어</tspan></text><text x="120" y="67">전극을 심는다</text>
+          <text x="120" y="96">머리 위 단자에</text><text x="120" y="107">선을 연결해</text><text x="120" y="118">외부 컴퓨터가 해석</text>
+          <text x="120" y="142" font-size="7.4" font-weight="700" fill="#F2B84B">아직 제품이 아닌</text><text x="120" y="153" font-size="7.4" font-weight="700" fill="#F2B84B">임상시험 단계</text><text x="120" y="166" font-size="7.4" fill="#A7ADBD">말하기 영역 읽기만</text>
+        </g>
+      </g>
+      <path d="M206 100 L232 100" stroke="#FF6B3D" stroke-width="1.8" marker-end="url(#ma)"/>
+      <!-- 2050 -->
+      <g transform="translate(236,6)">
+        <rect x="0" y="0" width="524" height="186" rx="8" fill="#1C2236" stroke="#FF6B3D"/>
+        <text x="12" y="20" font-size="10" font-weight="900" fill="#FF6B3D">2050 INNER VOICE</text>
+        <text x="12" y="34" font-size="7.6" fill="#A7ADBD">뇌를 열지 않고, 칩 하나가 읽기·넣기·AI 연산을 모두</text>
+        <!-- brain -->
+        <g transform="translate(150,30) scale(.82)">
+          <path d="M8 86 C6 46 52 10 118 8 C184 6 236 38 244 86 C248 114 236 136 216 146 C198 154 180 156 162 162 C134 170 100 168 82 156 C70 148 66 136 70 124 C60 122 46 118 34 112 C20 106 9 97 8 86 Z" fill="#161B2D" stroke="#EDEBE6" stroke-width="1.6"/>
+          <path d="M70 124 C100 112 136 104 178 100" stroke="#6E7590" stroke-width="1.1" fill="none"/>
+          <path d="M134 9 C128 44 120 84 110 127" stroke="#6E7590" stroke-width="1.1" fill="none"/>
+          <!-- speech motor area -->
+          <ellipse cx="104" cy="104" rx="20" ry="13" fill="#FF6B3D" opacity=".25"/>
+          <path d="M90 104 q7 -9 14 0 t14 0" stroke="#FF6B3D" stroke-width="1.6" fill="none"/>
+          <path d="M92 110 q6 -7 12 0 t12 0" stroke="#FF6B3D" stroke-width="1.2" fill="none" opacity=".8"/>
+          <!-- auditory area -->
+          <ellipse cx="140" cy="128" rx="22" ry="12" fill="#B6A8F2" opacity=".25"/>
+          <path d="M124 128 q8 -8 16 0 t16 0" stroke="#B6A8F2" stroke-width="1.6" fill="none"/>
+          <!-- chip -->
+          <rect x="150" y="60" width="22" height="16" rx="3" fill="#FF6B3D"/>
+          <path d="M155 64 h12 M155 68 h12 M155 72 h8" stroke="#fff" stroke-width=".9"/>
+          <path d="M150 70 C130 80 116 92 108 100 M162 76 C158 96 150 110 142 120" stroke="#FFB08F" stroke-width=".9" fill="none" stroke-dasharray="2 2"/>
+          <g stroke="#FF6B3D" fill="none" stroke-width="1.1" opacity=".7"><path d="M176 56 q6 -6 0 -14"/><path d="M182 60 q10 -10 0 -24"/></g>
+          <path d="M236 14 C214 30 196 44 174 62" stroke="#FF6B3D" stroke-width="1.2" fill="none" stroke-dasharray="3 3"/>
+          <!-- syringe -->
+          <g transform="translate(232,8) rotate(32)">
+            <rect x="0" y="0" width="46" height="10" rx="2" fill="#2C3450" stroke="#EDEBE6" stroke-width=".9"/>
+            <rect x="46" y="3" width="10" height="4" fill="#EDEBE6"/>
+            <line x1="-26" y1="5" x2="0" y2="5" stroke="#EDEBE6" stroke-width="1"/>
+            <path d="M8 2 l4 6 l4 -6 l4 6 l4 -6 l4 6" stroke="#FF6B3D" stroke-width=".8" fill="none"/>
+          </g>
+        </g>
+        <!-- callouts -->
+        <g font-size="7.8" fill="#EDEBE6">
+          <circle cx="20" cy="56" r="7" fill="#FF6B3D"/><text x="17.5" y="59" font-size="8" font-weight="900" fill="#fff">1</text>
+          <text x="32" y="54" font-weight="900">정맥 주사 한 번</text><text x="32" y="65" fill="#A7ADBD">칩이 혈액 순환을 따라 뇌까지</text>
+          <circle cx="20" cy="88" r="7" fill="#FF6B3D"/><text x="17.5" y="91" font-size="8" font-weight="900" fill="#fff">2</text>
+          <text x="32" y="86" font-weight="900">목표 영역에 자리 잡기</text><text x="32" y="97" fill="#A7ADBD">신경세포 바로 옆, 수술 없이</text>
+          <circle cx="20" cy="120" r="7" fill="#FF6B3D"/><text x="17.5" y="123" font-size="8" font-weight="900" fill="#fff">3</text>
+          <text x="32" y="118" font-weight="900">읽고, 넣는다</text><text x="32" y="129"><tspan fill="#FF8A5C">말하기 영역 = 읽기</tspan> · <tspan fill="#C6B8FF">듣기 영역 = 넣기</tspan></text>
+          <circle cx="20" cy="152" r="7" fill="#FF6B3D"/><text x="17.5" y="155" font-size="8" font-weight="900" fill="#fff">4</text>
+          <text x="32" y="150" font-weight="900">칩 안의 AI가 해독</text><text x="32" y="161" fill="#A7ADBD">신호 전체 대신 해독한 말만 무선 전송</text>
+          <text x="400" y="176" font-size="7.4" fill="#A7ADBD" text-anchor="end">선도, 가슴 수신기도, 외부 컴퓨터도 없음</text>
+        </g>
+        <g font-size="7.4" font-weight="700">
+          <text x="392" y="60" fill="#EDEBE6">칩</text>
+          <text x="392" y="140" fill="#FF8A5C">말하기 영역</text>
+          <text x="392" y="164" fill="#C6B8FF">듣기 영역 (청각 피질)</text>
+          <line x1="300" y1="134" x2="388" y2="138" stroke="#FF8A5C" stroke-width=".6"/>
+          <line x1="326" y1="136" x2="388" y2="161" stroke="#C6B8FF" stroke-width=".6"/>
+          <line x1="296" y1="86" x2="388" y2="58" stroke="#EDEBE6" stroke-width=".6"/>
+        </g>
+        <text x="430" y="34" font-size="8" font-weight="900" fill="#FF6B3D">정맥 주사 (가설)</text><text x="430" y="44" font-size="7" fill="#A7ADBD">혈액 순환을 따라 뇌로</text>
+      </g>
+    </svg>
+
+    <h3 style="margin-top:5mm"><span class="n">PART B</span>대화 한 번이 오가는 길</h3>
+    <div class="flow">
+      <div class="who"><svg viewBox="0 0 60 70"><path d="M10 68 L10 56 C3 52 0 44 0 36 C0 20 12 8 28 8 C44 8 56 20 56 34 C56 38 57 41 60 44 L56 46 L56 52 C56 56 53 58 49 58 L44 58 L44 68 Z" fill="#1C2236" stroke="#EDEBE6" stroke-width="1.4"/><circle cx="27" cy="30" r="5" fill="#FF6B3D"/></svg>보내는 사람</div>
+      <div class="fs"><div class="n">01</div><h5>말하려고 생각</h5><p>입은 가만히, 뇌에는 신호</p><span class="tag t-f">사실</span></div><div class="fa">→</div>
+      <div class="fs"><div class="n">02</div><h5>칩이 읽기</h5><p>신경세포 신호 기록</p><span class="tag t-f">사실</span></div><div class="fa">→</div>
+      <div class="fs ai"><div class="n">03 · AI</div><h5>의도 확인</h5><p>말하려는 생각만 통과</p><span class="tag t-h">가설</span></div><div class="fa">→</div>
+      <div class="fs ai"><div class="n">04 · AI</div><h5>말로 해독</h5><p>단어에 말투·감정까지</p><span class="tag t-h">가설</span></div><div class="fa">→</div>
+      <div class="fs"><div class="n">05</div><h5>무선 전송</h5><p>해독한 말을 상대 칩으로</p><span class="tag t-h">가설</span></div><div class="fa">→</div>
+      <div class="fs ai rx"><div class="n">06 · AI</div><h5>맞춤 변환</h5><p>언어가 다를 때만 번역</p><span class="tag t-h">가설</span></div><div class="fa">→</div>
+      <div class="fs rx"><div class="n">07</div><h5>뇌로 받기</h5><p>귀 없이 머릿속에서 들림</p><span class="tag t-h">가설</span></div>
+      <div class="who"><svg viewBox="0 0 60 70" style="transform:scaleX(-1)"><path d="M10 68 L10 56 C3 52 0 44 0 36 C0 20 12 8 28 8 C44 8 56 20 56 34 C56 38 57 41 60 44 L56 46 L56 52 C56 56 53 58 49 58 L44 58 L44 68 Z" fill="#1C2236" stroke="#EDEBE6" stroke-width="1.4"/><circle cx="27" cy="34" r="5" fill="#B6A8F2"/></svg>받는 사람</div>
+    </div>
+
+    <div class="mods">
+      <div class="md"><div class="no">AI 01</div><h4>적은 신호로 정확히</h4><div class="what">적은 신호로도 정확히 해석</div><div class="seed"><b>씨앗</b> 말 해독 <span class="nw">97.5%<sup>[3]</sup></span></div></div>
+      <div class="md"><div class="no">AI 02</div><h4>말할 생각만 통과</h4><div class="what">스치는 생각은 막고 말할 생각만</div><div class="seed"><b>씨앗</b> 생각 암호로 98% 이상 <span class="nw">제어<sup>[7]</sup></span></div></div>
+      <div class="md"><div class="no">AI 03</div><h4>말투·감정까지</h4><div class="what">뇌 신호와 언어를 함께 배운 모델</div><div class="seed"><b>씨앗</b> 속말 해독 최대 <span class="nw">74%<sup>[7]</sup></span></div></div>
+      <div class="md rx"><div class="no">AI 04</div><h4>받는 사람에 맞게</h4><div class="what">내 목소리 그대로, 언어만 상대에 맞게</div><div class="seed"><b>씨앗</b> 이어폰 실시간 <span class="nw">번역<sup>[6]</sup></span></div></div>
+      <div class="md rx"><div class="no">AI 05</div><h4>뇌에 넣는 법을 학습</h4><div class="what">자극과 소리의 관계를 개인별 학습</div><div class="seed"><b>씨앗</b> 뇌끼리 '예/아니오' <span class="nw">전달<sup>[2]</sup></span></div></div>
+      <div class="md sec2"><div class="no">AI 06</div><h4>뇌를 지키는 보안</h4><div class="what">침입·비정상 자극 즉시 차단</div><div class="seed"><b>씨앗</b> <span class="tag t-p">팀 제안</span></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TRAJECTORY -->
+<div class="sec">
+  <div class="sh"><span class="pill now">SEEDS → 2050</span><h2>씨앗은 이미 심어졌다</h2><span class="s"><span class="tag t-f">사실</span> 연구·발표로 확인 &nbsp;<span class="tag t-h">가설</span> 팀 추정</span><div class="rule"></div></div>
+  <div class="tl"><div class="bar"></div>
+    
+    <div class="tp"><div class="y">2019</div><div class="d"></div><div class="k">워싱턴대</div><p><b>뇌끼리</b> '예/아니오' <span class="nw">전달<sup>[2]</sup></span></p></div>
+    <div class="tp"><div class="y">2021</div><div class="d"></div><div class="k">UCSF</div><p>말 잃은 환자의 말을 <b>단어로</b> <span class="nw">해독<sup>[1]</sup></span></p></div>
+    <div class="tp"><div class="y">2024</div><div class="d"></div><div class="k">UC Davis</div><p>임상시험에서 말 해독 <span class="nw"><b>97.5%</b><sup>[3]</sup></span></p></div>
+    <div class="tp"><div class="y">2024</div><div class="d"></div><div class="k">Synchron</div><p><b>머리 안 여는</b> 혈관 이식 <span class="nw">안전<sup>[4]</sup></span></p></div>
+    <div class="tp"><div class="y">2026</div><div class="d"></div><div class="k">Paradromics</div><p><b>완전 이식형</b> 장치 첫 사람 <span class="nw">이식<sup>[5]</sup></span></p></div>
+    <div class="tp h"><div class="y">2030s</div><div class="d"></div><div class="k">가설</div><p>선 없는 무선 칩으로 말 해독</p></div>
+    <div class="tp h"><div class="y">2040s</div><div class="d"></div><div class="k">가설</div><p>수술 없는 삽입, 뇌로 단어 전달</p></div>
+    <div class="tp e"><div class="y">2050</div><div class="d"></div><div class="k" style="color:var(--voice)">INNER VOICE</div><p>누구나 생각을 주고받는다</p></div>
+  </div>
+</div>
+
+<!-- CHALLENGES -->
+<div class="sec">
+  <div class="sh"><span class="pill fut">CHALLENGES</span><h2>남은 벽과 넘을 기술</h2><span class="s">지금의 한계 <span class="tag t-f">사실</span> → 필요한 미래 기술 <span class="tag t-h">가설</span></span><div class="rule"></div></div>
+  <table class="ch">
+    <tr><th>벽</th><th>지금</th><th>2050년에 필요한 기술</th><th>AI의 역할</th></tr>
+    <tr class="top1"><td>전원·통신<br><span class="big">가장 큰 벽</span></td><td class="now">성공 사례는 머리 위 단자에 선 <span class="nw">연결<sup>[3]</sup></span> · 완전 이식형도 가슴에 수신기를 <span class="nw">둔다<sup>[5]</sup></span></td><td class="fut">무선 충전되는 초저전력 칩</td><td class="ai"><b>칩 안에서 해독해 '말'만 전송</b> → 보낼 데이터·전력이 크게 줄어든다</td></tr>
+    <tr><td>뇌를 열어야 함</td><td class="now">말 해독에 성공한 장치는 두개골을 열어 <span class="nw">심는다<sup>[3]</sup></span></td><td class="fut">주사로 넣어 정확한 위치에 자리 잡는 초소형 칩</td><td class="ai">칩이 놓인 위치에 맞춰 해독 방식을 스스로 학습</td></tr>
+    <tr><td>뇌에 넣기</td><td class="now">뇌끼리 전달은 아직 '예/아니오' <span class="nw">수준<sup>[2]</sup></span></td><td class="fut">듣기 영역을 정밀하게 자극하는 다채널 칩</td><td class="ai">사람마다 다른 뇌에 맞춰 자극 방법을 학습</td></tr>
+    <tr><td>안전·교체</td><td class="now">평생 사용한 자료는 아직 없다</td><td class="fut">생체 친화·회수 가능한 소재</td><td class="ai">이상 징후 감지, 기능은 소프트웨어로 업데이트</td></tr>
+    <tr class="hack"><td>해킹</td><td class="now">뇌에 넣을 수 있다면 남이 넣을 수도 있다</td><td class="fut">뇌 신호 암호화, 침입 차단</td><td class="ai">비정상적인 접근·자극 명령을 즉시 차단</td></tr>
+  </table>
+</div>
+
+<!-- ETHICS -->
+<div class="sec">
+  <div class="sh"><span class="pill q">ETHICS</span><h2>질문과 우리의 답</h2><span class="s"><span class="tag t-p">팀 제안</span></span><div class="rule"></div></div>
+  <div class="eth">
+    <div class="qq"><h6>생각의 사생활</h6><p>생각은 누가 보호하나?</p><div class="ans">칩 밖으로는 해독된 말만 나가고, 생각 원본은 저장하지 않는다</div></div>
+    <div class="qq"><h6>격차</h6><p>칩이 없는 사람은?</p><div class="ans">칩이 없어도 이어폰·화면으로 같은 대화망에 연결된다</div></div>
+    <div class="qq"><h6>쓰지 않을 자유</h6><p>말로 대화할 권리</p><div class="ans">칩 없이도 모든 공공서비스를 이용하고, 칩은 언제든 끌 수 있다</div></div>
+    <div class="qq"><h6>정체성</h6><p>AI가 다듬은 말도 나의 말일까?</p><div class="ans">보내기 전에 확인하고, '원문 그대로 보내기'를 고를 수 있다</div></div>
+  </div>
+</div>
+
+<div class="foot">
+  <div class="team"><div class="h">9팀</div><div class="nm">박준우</div><div class="nm">김나연</div><div class="nm">Farnood</div><div></div><div class="r">기획 총괄 · 서비스 설계</div><div class="r">기술 조사 · 사실 검증</div><div class="r">시각화 · 미래 장면</div></div>
+  <div class="src"><b>출처</b> &nbsp;[1] Moses et al., NEJM 2021 · UCSF (2021.7) &nbsp;[2] UW News (2019.7.1) · Jiang et al., Scientific Reports 2019 &nbsp;[3] UC Davis Health (2024.8) · Card et al., NEJM 2024 &nbsp;[4] BusinessWire (2024.9.30) · Synchron COMMAND 연구 &nbsp;[5] Michigan Medicine (2026.6) · Paradromics Connect-One 첫 이식 (FDA 임상 승인 2025.11) &nbsp;[6] 아시아경제 (2025.11.4) · 에어팟 실시간 번역 한국어 지원 &nbsp;[7] Kunz et al., Cell (2025.8) · Interesting Engineering (2025.8.14) &nbsp;[8] The Next Web (2026.7.1) · Meta Brain2Qwerty v2 (MEG, 타자 과제)
+    <div class="legend"><span class="tag t-f">사실</span>출처로 확인 <span class="tag t-h">가설</span>연구의 연장선에서 본 팀 추정 <span class="tag t-p">팀 제안</span>팀 설계 &nbsp;·&nbsp; <b>AI 활용</b> 자료 조사·문안·도식 초안에 Claude 활용. 출처 원문으로 확인된 내용만 '사실'로 표기</div></div>
+</div>
+
+</div></body></html>
